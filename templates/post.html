@@ -7,8 +7,10 @@
     <div class="container">
         <div class="row">
             <div class="col-lg-8 col-md-10 mx-auto">
+
                 <div class="post-heading">
                     <h1>{{post.title}}</h1>
+
                     <h2 class="subheading">{{post.subtitle}}</h2>
                     <span class="meta">Posted by
                         <a href="#">{{post.author.name}}</a>
@@ -34,6 +36,11 @@
                         Post</a>
                 </div>
                 {% endif %}
+                {% if current_user.is_authenticated and current_user.id == 1 %}
+                <a href="{{ url_for('delete_post', post_id=post.id) }}" class="btn btn-danger"
+                    onclick="return confirm('Yakin ingin menghapus post ini?')">Hapus Post</a>
+                {% endif %}
+
 
 
 

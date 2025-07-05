@@ -1,4 +1,9 @@
 
+import os
+from dotenv import load_dotenv
+from flask_mail import Mail, Message
+from itsdangerous import URLSafeTimedSerializer, SignatureExpired, BadSignature
+
 from datetime import date
 from functools import wraps
 
@@ -16,8 +21,26 @@ from forms import CommentForm, CreatePostForm, LoginForm, RegisterForm
 from git_handle import git_push
 from tables import BlogPost, Comment, User, db
 
+
+
+# Muat environment variables dari file .env
+load_dotenv()
+
 app = Flask(__name__,instance_relative_config=True)
 app.config["SECRET_KEY"] = "8BYkEfBA6O6donzWlSihBXox7C0sKR6b"
+# Serializer untuk membuat dan memverifikasi token
+serializer = URLSafeTimedSerializer(app.config['SECRET_KEY'])
+
+# ==================== KONFIGURASI FLASK-MAIL ==================== #
+app.config['MAIL_SERVER'] = os.getenv('MAIL_SERVER')
+app.config['MAIL_PORT'] = int(os.getenv('MAIL_PORT'))
+app.config['MAIL_USE_TLS'] = os.getenv('MAIL_USE_TLS').lower() in ['true', '1', 't']
+app.config['MAIL_USERNAME'] = os.getenv('MAIL_USERNAME')
+app.config['MAIL_PASSWORD'] = os.getenv('MAIL_PASSWORD')
+app.config['MAIL_DEFAULT_SENDER'] = ('Sahal\'s Blog', os.getenv('MAIL_USERNAME'))
+
+mail = Mail(app)
+# ============================================================= #
 
 # interacting with CkEditor
 ckeditor = CKEditor(app)
@@ -76,12 +99,13 @@ def get_year():
 
 @app.route("/")
 def home():
-
-    first_post, *posts = BlogPost.query.all()
-    (*posts,) = first_post, *posts[::-1]
-    print(posts)
-
-    return render_template("index.html", all_posts=posts)
+    # Ambil semua postingan dan urutkan berdasarkan tanggal terbaru (best practice)
+    # Ini akan mengembalikan daftar kosong jika tidak ada post, tanpa menyebabkan error
+    all_blog_posts = BlogPost.query.order_by(BlogPost.id.desc()).all()
+    
+    # Kirim daftar postingan ke template
+    # Jika all_blog_posts kosong, perulangan for di template tidak akan berjalan
+    return render_template("index.html", all_posts=all_blog_posts)
 
 
 @app.route("/about")
@@ -102,44 +126,91 @@ def register():
         email = form.email.data
         user = User.query.filter_by(email=email).first()
         if user:
-            flash("Email already exists! Please login instead.")
+            flash("Email sudah terdaftar! Silakan login.")
             return redirect(url_for("login"))
 
-        # If user doesn't exist then create user
         password = generate_password_hash(
             form.password.data, method="pbkdf2:sha256", salt_length=8
         )
-        new_user = User(email=email, password=password, name=form.name.data)
+        # Buat user dengan status is_verified = False
+        new_user = User(
+            email=email, 
+            password=password, 
+            name=form.name.data,
+            is_verified=False
+        )
         db.session.add(new_user)
         db.session.commit()
 
-        login_user(new_user)
+        # === KIRIM EMAIL VERIFIKASI ===
+        # Buat token (berlaku selama 1 jam / 3600 detik)
+        token = serializer.dumps(email, salt='email-verification-salt')
+        # Buat link verifikasi
+        verification_url = url_for('verify_email', token=token, _external=True)
+        # Buat pesan email
+        msg = Message(
+            subject="Verifikasi Akun Sahal's Blog",
+            recipients=[email],
+            html=f"<p>Terima kasih telah mendaftar! Klik link di bawah ini untuk memverifikasi akun Anda:</p>"
+                 f"<p><a href='{verification_url}'>{verification_url}</a></p>"
+                 f"<p>Jika Anda tidak merasa mendaftar, abaikan email ini.</p>"
+        )
+        mail.send(msg)
+        # ===============================
 
-        return redirect(url_for("home"))
+        flash("Pendaftaran berhasil! Silakan cek email Anda untuk verifikasi akun.", "info")
+        return redirect(url_for("login"))
     return render_template("register.html", form=form)
 
+@app.route('/verify/<token>')
+def verify_email(token):
+    try:
+        # Verifikasi token dengan masa berlaku 1 jam (3600 detik)
+        email = serializer.loads(token, salt='email-verification-salt', max_age=3600)
+    except SignatureExpired:
+        flash("Link verifikasi telah kedaluwarsa. Silakan daftar ulang.", "danger")
+        return redirect(url_for('register'))
+    except BadSignature:
+        flash("Link verifikasi tidak valid.", "danger")
+        return redirect(url_for('register'))
+
+    user = User.query.filter_by(email=email).first_or_404()
+    
+    if user.is_verified:
+        flash("Akun sudah diverifikasi. Silakan login.", "info")
+    else:
+        user.is_verified = True
+        db.session.commit()
+        flash("Akun Anda telah berhasil diverifikasi! Silakan login.", "success")
+        
+    return redirect(url_for('login'))
 
 @app.route("/login", methods=["GET", "POST"])
 def login():
     form = LoginForm()
-
     if form.validate_on_submit():
         email = form.email.data
         user = User.query.filter_by(email=email).first()
-        # if user exists, than check hashed password
+        
         if not user:
-            flash("This email doesn't exist in our database!")
+            flash("Email tidak terdaftar di database kami!")
             return render_template("login.html", form=form)
 
-        # check hashed password
+        # Cek apakah password cocok
         if check_password_hash(pwhash=user.password, password=form.password.data):
+            
+            # === TAMBAHKAN PENGECEKAN INI ===
+            if not user.is_verified:
+                flash("Akun Anda belum diverifikasi. Silakan cek email Anda.", "warning")
+                return redirect(url_for('login'))
+            # ===============================
+
             login_user(user)
             return redirect(url_for("home"))
         else:
-            # password is incorrect
-            flash("Incorrect password, try again!")
+            flash("Password salah, silakan coba lagi!")
             return render_template("login.html", form=form)
-
+            
     return render_template("login.html", form=form)
 
 

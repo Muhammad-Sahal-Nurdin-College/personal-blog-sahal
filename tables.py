@@ -36,6 +36,9 @@ class User(UserMixin, db.Model):
 
     # user to comments -- one to many
     comments = relationship("Comment", back_populates="author")
+    
+    # TAMBAHKAN KOLOM INI
+    is_verified = db.Column(db.Boolean, nullable=False, default=False)
 
 
 class Comment(db.Model):

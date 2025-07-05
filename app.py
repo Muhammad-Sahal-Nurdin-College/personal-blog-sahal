@@ -1,7 +1,8 @@
+
 from datetime import date
 from functools import wraps
 
-from flask import Flask, abort, flash, redirect, render_template, url_for
+from flask import Flask, abort, flash, redirect, render_template, url_for, make_response, jsonify
 from flask_bootstrap import Bootstrap
 from flask_ckeditor import CKEditor
 from flask_gravatar import Gravatar
@@ -235,6 +236,16 @@ def delete_post(post_id):
 
     return redirect(url_for("home"))
 
+
+@app.route("/set-cookie-consent")
+def set_cookie_consent():
+    # Buat response JSON sederhana
+    response = make_response(jsonify(message="Cookie consent set"))
+    
+    # Set cookie bernama 'cookie_consent' dengan nilai 'true'
+    # max_age diatur dalam detik. 31536000 detik = 1 tahun.
+    response.set_cookie('cookie_consent', 'true', max_age=60) 
+    return response
 
 if __name__ == "__main__":
     with app.app_context():

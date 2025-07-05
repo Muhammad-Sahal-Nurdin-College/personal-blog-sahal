@@ -1,14 +1,14 @@
 {% extends 'base.html' %}
 
 {% block content %}
-<title>David's Blog</title>
+<title>Sahal's Blog</title>
 <!-- Page Header-->
 <header class="masthead" style="background-image: url({{url_for('static', filename='assets/img/home-bg.jpg')}})">
     <div class="container position-relative px-4 px-lg-5">
         <div class="row gx-4 gx-lg-5 justify-content-center">
             <div class="col-md-10 col-lg-8 col-xl-7">
                 <div class="site-heading">
-                    <h1>David's Blog</h1>
+                    <h1>Sahal's Blog</h1>
                     <span class="subheading">A Collection of Random Musings...</span>
                 </div>
             </div>
@@ -40,10 +40,6 @@
                     <!-- Divider-->
                     <hr class="my-4" />
             </div>
-
-
-
-
             {% else %}
             <div class="post-preview">
                 <a href="{{ url_for('show_post', post_id=post.id) }}">
@@ -66,14 +62,58 @@
             {% endif %}
 
             {% endfor %}
-
             <!-- Pager-->
             {% if current_user.id == 1 %}
             <div class="d-flex justify-content-end mb-4"><a class="btn btn-primary text-uppercase"
-                    href="{{url_for('add_new_post')}}">Create New Post</a></div>
+                    href="{{url_for('add_new_post')}}">Create New Post</a>
+            </div>
             {% endif %}
         </div>
     </div>
+    <div id="cookie-banner" class="alert alert-info text-center fixed-bottom mb-0 p-3" role="alert"
+        style="display: none;">
+        🍪 Kami menggunakan cookie untuk memastikan Anda mendapatkan pengalaman terbaik di situs web kami.
+        <a href="#" class="alert-link">Pelajari lebih lanjut</a>.
+        <button id="accept-cookies" type="button" class="btn btn-primary btn-sm ms-3">
+            Saya Mengerti
+        </button>
+    </div>
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const banner = document.getElementById('cookie-banner');
+            const acceptBtn = document.getElementById('accept-cookies');
+
+            // Fungsi untuk memeriksa cookie
+            function getCookie(name) {
+                let cookieArr = document.cookie.split(';');
+                for (let i = 0; i < cookieArr.length; i++) {
+                    let cookiePair = cookieArr[i].split('=');
+                    if (name == cookiePair[0].trim()) {
+                        return decodeURIComponent(cookiePair[1]);
+                    }
+                }
+                return null;
+            }
+
+            // Tampilkan banner jika cookie 'cookie_consent' tidak ada
+            if (!getCookie('cookie_consent')) {
+                banner.style.display = 'block';
+            }
+
+            // Event listener untuk tombol 'Saya Mengerti'
+            acceptBtn.addEventListener('click', function () {
+                // Panggil endpoint di Flask untuk mengatur cookie
+                fetch("{{ url_for('set_cookie_consent') }}")
+                    .then(response => response.json())
+                    .then(data => {
+                        console.log(data.message);
+                        // Sembunyikan banner setelah diklik
+                        banner.style.display = 'none';
+                    });
+            });
+        });
+    </script>
     {% block footer %}{{super()}}{% endblock %}
 
-    {% endblock %}
+</div>
+{% endblock %}

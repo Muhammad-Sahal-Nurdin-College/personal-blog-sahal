@@ -1,37 +1,85 @@
 {% extends 'base.html' %}
 
-
+{# Mengosongkan block navbar (atau header) agar tidak muncul #}
+{% block navbar %}{% endblock %}
 
 {% block content %}
-<title>Register</title>
-<!-- Page Header -->
-<header class="masthead" style="background-image: url({{url_for('static', filename='/assets/img/register-bg.jpg')}})">
-    <div class="overlay"></div>
-    <div class="container">
-        <div class="row">
-            <div class="col-lg-8 col-md-10 mx-auto">
-                <div class="page-heading">
-                    <h1>Register</h1>
-                    <span class="subheading">Start Contributing to the Blog!</span>
-                </div>
+<title>Daftar</title>
+
+<style>
+    body {
+        margin: 0;
+        padding: 0;
+    }
+
+    .register-container {
+        display: flex;
+        min-height: 100vh;
+        width: 100%;
+    }
+
+    .register-form-section {
+        width: 50%;
+        padding: 40px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .register-image-section {
+        width: 50%;
+        /* Menggunakan gambar khusus untuk halaman registrasi */
+        background-image: url("{{ url_for('static', filename='assets/img/register-bg.jpg') }}");
+        background-size: cover;
+        background-position: center;
+    }
+
+    .form-wrapper {
+        width: 100%;
+        max-width: 450px;
+    }
+
+    /* Responsif untuk layar kecil (mobile) */
+    @media (max-width: 768px) {
+        .register-container {
+            flex-direction: column;
+        }
+
+        .register-image-section {
+            display: none;
+        }
+
+        .register-form-section {
+            width: 100%;
+            padding: 20px;
+        }
+    }
+</style>
+
+<div class="register-container">
+    <div class="register-form-section">
+        <div class="form-wrapper">
+            <div class="text-center mb-4">
+                <h1>Daftar Akun</h1>
+                <p class="subheading">Silahkan daftar akunmu di sini!</p>
             </div>
+
+            {% if get_flashed_messages() %}
+            {% for message in get_flashed_messages() %}
+            <p style="color:red; text-align: center;">{{ message }}</p>
+            {% endfor %}
+            {% endif %}
+
+            {# Blok ini akan diisi oleh form registrasi Anda #}
+            {% block form %} {{super()}} {% endblock %}
         </div>
     </div>
-</header>
 
-
-
-<div class="container">
-    <div class="row">
-        <div class="col-lg-8 col-md-10 mx-auto">
-            {% block form%} {{super()}} {% endblock %}
-
-        </div>
+    <div class="register-image-section">
     </div>
 </div>
-
-
-
-
-{% block footer %}{{super()}}{%endblock%}
 {% endblock %}
+
+{# Mengosongkan block footer agar tidak muncul #}
+{% block footer %}{% endblock %}

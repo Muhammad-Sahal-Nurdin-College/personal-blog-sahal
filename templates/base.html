@@ -9,10 +9,12 @@
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
 <meta name="description" content="" />
-<meta name="author" content="" />
-<link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
+<meta name="author" content="muhammad-sahal-nurdin" />
+<link rel="icon" type="image/x-icon" href="static/assets/favicon.ico" />
+
 <!-- Font Awesome icons (free version)-->
 <script src="https://use.fontawesome.com/releases/v6.1.0/js/all.js" crossorigin="anonymous"></script>
+
 <!-- Google fonts-->
 <link href="https://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic" rel="stylesheet"
     type="text/css" />
@@ -21,15 +23,17 @@
     rel="stylesheet" type="text/css" />
 <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/styles/default.min.css">
 <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/highlight.min.js"></script>
+
 <!-- Core theme CSS (includes Bootstrap)-->
 <link href="{{url_for('static', filename='/css/styles.css')}}" rel="stylesheet" />
+
 {% endblock %}
 
 {% block navbar %}
 <nav class="navbar navbar-expand-lg navbar-light" id="mainNav">
     <div class="container px-4 px-lg-5">
         <a class="navbar-brand" href="{{url_for('home')}}"><img class="navbar-img"
-                src="{{url_for('static', filename='assets/img/cowlogo.png')}}"></img>Cow Inc.</a>
+                src="{{url_for('static', filename='assets/img/sahallogo.png')}}"></img>Sahal Nurdin</a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive"
             aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
             Menu
@@ -37,19 +41,20 @@
         </button>
         <div class="collapse navbar-collapse" id="navbarResponsive">
             <ul class="navbar-nav ms-auto py-4 py-lg-0">
-                <li class="nav-item"><a class="nav-link px-lg-3 py-3 py-lg-4" href="{{ url_for('home')}}">Home</a></li>
-                <li class="nav-item"><a class="nav-link px-lg-3 py-3 py-lg-4" href="{{url_for('about')}}">About</a></li>
-                <li class="nav-item"><a class="nav-link px-lg-3 py-3 py-lg-4" href="{{url_for('contact')}}">Contact</a>
+                <li class="nav-item"><a class="nav-link px-lg-3 py-3 py-lg-4" href="{{ url_for('home')}}">Beranda</a>
+                </li>
+                <li class="nav-item"><a class="nav-link px-lg-3 py-3 py-lg-4" href="{{url_for('about')}}">Tentang</a>
+                </li>
+                <li class="nav-item"><a class="nav-link px-lg-3 py-3 py-lg-4" href="{{url_for('contact')}}">Kontak</a>
                 </li>
                 {% if not current_user.is_authenticated %}
-                <li class="nav-item"><a class="nav-link px-lg-3 py-3 py-lg-4" href="{{url_for('login')}}">Login</a></li>
-                <li class="nav-item"><a class="nav-link px-lg-3 py-3 py-lg-4"
-                        href="{{url_for('register')}}">Register</a></li>
+                <li class="nav-item"><a class="nav-link px-lg-3 py-3 py-lg-4" href="{{url_for('login')}}">Masuk</a></li>
+                <li class="nav-item"><a class="nav-link px-lg-3 py-3 py-lg-4" href="{{url_for('register')}}">Daftar</a>
+                </li>
                 {% else %}
-                <li class="nav-item"><a class="nav-link px-lg-3 py-3 py-lg-4" href="{{url_for('logout')}}">Logout</a>
+                <li class="nav-item"><a class="nav-link px-lg-3 py-3 py-lg-4" href="{{url_for('logout')}}">Keluar</a>
                 </li>
                 {% endif %}
-
             </ul>
         </div>
     </div>
@@ -64,7 +69,7 @@
             <div class="col-md-10 col-lg-8 col-xl-7">
                 <ul class="list-inline text-center">
                     <li class="list-inline-item foot-icon">
-                        <a href="" target="_blank">
+                        <a href="https://www.linkedin.com/in/muhammadsahalnurdin/" target="_blank">
                             <span class="fa-stack fa-lg foot-icon">
                                 <i class="fas fa-circle fa-stack-2x"></i>
                                 <i class="fab fa-linkedin-in fa-stack-1x fa-inverse"></i>
@@ -72,7 +77,7 @@
                         </a>
                     </li>
                     <li class="list-inline-item">
-                        <a href="https://www.youtube.com/channel/UCEnBPbnNnqhQIIhW1uLXrLA" target="_blank">
+                        <a href="https://www.youtube.com/@sahaln18" target="_blank">
                             <span class="fa-stack fa-lg foot-icon">
                                 <i class="fas fa-circle fa-stack-2x"></i>
                                 <i class="fab fa-youtube fa-stack-1x fa-inverse"></i>
@@ -80,7 +85,7 @@
                         </a>
                     </li>
                     <li class="list-inline-item">
-                        <a href="https://github.com/dave-cao" target="_blank">
+                        <a href="https://github.com/SahalN" target="_blank">
                             <span class="fa-stack fa-lg foot-icon">
                                 <i class="fas fa-circle fa-stack-2x"></i>
                                 <i class="fab fa-github fa-stack-1x fa-inverse"></i>
@@ -88,7 +93,8 @@
                         </a>
                     </li>
                 </ul>
-                <div class="small text-center text-muted fst-italic">Copyright &copy; Sahal {{ year}}</div>
+                <div class="small text-center text-muted fst-italic">Copyright &copy; Muhammad Sahal Nurdin {{ year}}
+                </div>
             </div>
         </div>
     </div>

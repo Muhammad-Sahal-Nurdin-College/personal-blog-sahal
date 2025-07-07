@@ -17,7 +17,7 @@ from flask_wtf.csrf import CSRFProtect
 from werkzeug.security import check_password_hash, generate_password_hash
 
 from forms import CommentForm, CreatePostForm, LoginForm, RegisterForm
-# git functions
+
 from git_handle import git_push
 from tables import BlogPost, Comment, User, db
 

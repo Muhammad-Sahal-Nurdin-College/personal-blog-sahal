@@ -27,6 +27,8 @@
         <div class="col-lg-8 col-md-10 mx-auto">
             {# Load CKEditor sebelum form #}
             {{ ckeditor.load() }}
+
+
             {{ ckeditor.load_code_theme() }}
             {{ ckeditor.config(name='body') }}
 
@@ -53,6 +55,8 @@
         </div>
     </div>
 </div>
+
+
 
 {% block footer %}{{super()}}{% endblock %}
 {% endblock %}

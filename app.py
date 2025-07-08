@@ -1,4 +1,3 @@
-
 import os
 from dotenv import load_dotenv
 from flask_mail import Mail, Message
@@ -220,7 +219,7 @@ def logout():
     return redirect(url_for("home"))
 
 
-# ====================== ADDING / SHOWING / EDITING POSTS ============= #
+# ====================== ADDING / SHOWING / EDITING /  DELETING POSTS ============= #
 @app.route("/post/<int:post_id>", methods=["GET", "POST"])
 def show_post(post_id):
     all_comments = db.session.query(Comment).all()[::-1]

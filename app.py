@@ -20,6 +20,8 @@ from forms import CommentForm, CreatePostForm, LoginForm, RegisterForm
 from git_handle import git_push
 from tables import BlogPost, Comment, User, db
 
+from flask_caching import Cache
+
 
 
 # Muat environment variables dari file .env
@@ -27,6 +29,14 @@ load_dotenv()
 
 app = Flask(__name__,instance_relative_config=True)
 app.config["SECRET_KEY"] = "8BYkEfBA6O6donzWlSihBXox7C0sKR6b"
+
+# Konfigurasi cache sederhana (disimpan di memori)
+app.config['CACHE_TYPE'] = 'SimpleCache'
+app.config['CACHE_DEFAULT_TIMEOUT'] = 60  # cache berlaku selama 60 detik
+# Inisialisasi objek cache
+cache = Cache(app)
+
+
 # Serializer untuk membuat dan memverifikasi token
 serializer = URLSafeTimedSerializer(app.config['SECRET_KEY'])
 
@@ -95,9 +105,10 @@ def admin_only(f):
 def get_year():
     return dict(year=date.today().year)
 
-
+@cache.cached(timeout=120)  # cache selama 120 detik
 @app.route("/")
 def home():
+    print("query jalan")  # Debug: hanya muncul saat cache belum aktif
     # Ambil semua postingan dan urutkan berdasarkan tanggal terbaru (best practice)
     # Ini akan mengembalikan daftar kosong jika tidak ada post, tanpa menyebabkan error
     all_blog_posts = BlogPost.query.order_by(BlogPost.id.desc()).all()
@@ -106,12 +117,12 @@ def home():
     # Jika all_blog_posts kosong, perulangan for di template tidak akan berjalan
     return render_template("index.html", all_posts=all_blog_posts)
 
-
+@cache.cached(timeout=120)  # Cache 2 menit
 @app.route("/about")
 def about():
     return render_template("about.html")
 
-
+@cache.cached(timeout=120)  # Cache 2 menit
 @app.route("/contact")
 def contact():
     return render_template("contact.html")
@@ -316,6 +327,24 @@ def set_cookie_consent():
     # max_age diatur dalam detik. 31536000 detik = 1 tahun.
     response.set_cookie('cookie_consent', 'true', max_age=60) 
     return response
+
+@app.route("/debug-session")
+def debug_session():
+    print("Current user name:", current_user.name)
+    return "Cek terminal / console Flask"
+
+@app.after_request
+def add_cache_headers(response):
+    # Cek apakah konten HTML
+    if response.content_type == "text/html; charset=utf-8":
+        response.headers['Cache-Control'] = 'public, max-age=120'
+    return response
+
+@app.route("/clear-cache")
+def clear_cache():
+    cache.clear()
+    return "Cache dibersihkan"
+
 
 if __name__ == "__main__":
     with app.app_context():

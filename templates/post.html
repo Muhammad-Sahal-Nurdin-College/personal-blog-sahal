@@ -42,16 +42,20 @@
                     Post</a>
                 {% endif %}
 
-                <!--           Comments Area -->
+
+
+                <!--Comments Area -->
                 <br>
                 {{ ckeditor.load() }}
+
                 {% block form %}
+
+
+
                 {{ super() }}
-                <style>
-                    form button[type="submit"] {
-                        margin-top: 15px;
-                    }
-                </style>
+
+
+
                 {% endblock %}
 
                 <div class="col-lg-8 col-md-10 mx-auto comment">

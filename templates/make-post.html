@@ -9,13 +9,13 @@
             <div class="col-lg-8 col-md-10 mx-auto">
                 <div class="page-heading">
                     {% if is_edit: %}
-                    <title>Edit</title>
-                    <h1>Edit Post</h1>
+                    <title>Perbarui</title>
+                    <h1>Perbarui Postingan</h1>
                     {% else: %}
-                    <title>New</title>
-                    <h1>New Post</h1>
+                    <title>Baru</title>
+                    <h1>Postingan Baru</h1>
                     {% endif %}
-                    <span class="subheading">You're going to make a great blog post!</span>
+                    <span class="subheading">Kamu punya sesuatu yang layak dibagikan!</span>
                 </div>
             </div>
         </div>
@@ -25,10 +25,31 @@
 <div class="container">
     <div class="row">
         <div class="col-lg-8 col-md-10 mx-auto">
-            {% block form %}{{super()}}{% endblock %}
+            {# Load CKEditor sebelum form #}
+            {{ ckeditor.load() }}
             {{ ckeditor.load_code_theme() }}
-            {{ ckeditor.load(custom_url=url_for('static', filename='ckeditor/ckeditor.js')) }}
             {{ ckeditor.config(name='body') }}
+
+            <style>
+                /* Tambahkan jarak antara editor dan tombol */
+                form .ck-editor__editable {
+                    margin-bottom: 20px;
+                }
+
+                form button[type="submit"] {
+                    margin-top: 10px;
+                }
+
+                form input,
+                form textarea,
+                form select {
+                    margin-bottom: 15px;
+                }
+            </style>
+
+            {% block form %}
+            {{ super() }}
+            {% endblock %}
         </div>
     </div>
 </div>

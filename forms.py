@@ -6,26 +6,26 @@ from wtforms.validators import URL, DataRequired, Email
 
 ##WTForm
 class CreatePostForm(FlaskForm):
-    title = StringField("Blog Post Title", validators=[DataRequired()])
-    subtitle = StringField("Subtitle", validators=[DataRequired()])
-    img_url = StringField("Blog Image URL", validators=[DataRequired(), URL()])
-    body = CKEditorField("Blog Content", validators=[DataRequired()])
-    submit = SubmitField("Submit Post")
+    title = StringField("Judul Postingan Blog ", validators=[DataRequired()])
+    subtitle = StringField("Tambahkan Subjudul", validators=[DataRequired()])
+    img_url = StringField("Gambar URL Blog", validators=[DataRequired(), URL()])
+    body = CKEditorField("Konten Blog", validators=[DataRequired()])
+    submit = SubmitField("Publikasikan")
 
 
 class RegisterForm(FlaskForm):
     email = EmailField("Email", validators=[DataRequired(), Email()])
-    password = PasswordField("Password", validators=[DataRequired()])
-    name = StringField("Name", validators=[DataRequired()])
-    submit = SubmitField("Sign Me Up!")
+    password = PasswordField("Kata Sandi", validators=[DataRequired()])
+    name = StringField("Nama", validators=[DataRequired()])
+    submit = SubmitField("Daftar Sekarang")
 
 
 class LoginForm(FlaskForm):
     email = EmailField("Email", validators=[DataRequired(), Email()])
-    password = PasswordField("Password", validators=[DataRequired()])
-    submit = SubmitField("Login")
+    password = PasswordField("Kata Sandi", validators=[DataRequired()])
+    submit = SubmitField("Masuk")
 
 
 class CommentForm(FlaskForm):
-    body = CKEditorField("Comment", validators=[DataRequired()])
-    submit = SubmitField("Submit Comment")
+    body = CKEditorField("Komentar", validators=[DataRequired()])
+    submit = SubmitField("Tambah Komentar")

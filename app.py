@@ -21,7 +21,11 @@ from git_handle import git_push
 from tables import BlogPost, Comment, User, db
 
 from flask_caching import Cache
+from flask import make_response
+import time
 
+import hashlib
+from flask import request
 
 
 # Muat environment variables dari file .env
@@ -108,7 +112,7 @@ def get_year():
 @cache.cached(timeout=120)  # cache selama 120 detik
 @app.route("/")
 def home():
-    print("query jalan")  # Debug: hanya muncul saat cache belum aktif
+    # print("query jalan")  # Debug: hanya muncul saat cache belum aktif
     # Ambil semua postingan dan urutkan berdasarkan tanggal terbaru (best practice)
     # Ini akan mengembalikan daftar kosong jika tidak ada post, tanpa menyebabkan error
     all_blog_posts = BlogPost.query.order_by(BlogPost.id.desc()).all()
@@ -333,17 +337,30 @@ def debug_session():
     print("Current user name:", current_user.name)
     return "Cek terminal / console Flask"
 
-@app.after_request
-def add_cache_headers(response):
-    # Cek apakah konten HTML
-    if response.content_type == "text/html; charset=utf-8":
-        response.headers['Cache-Control'] = 'public, max-age=120'
-    return response
+
 
 @app.route("/clear-cache")
 def clear_cache():
     cache.clear()
     return "Cache dibersihkan"
+
+@app.after_request
+def unified_cache_headers(response):
+    if response.content_type.startswith("text/html"):
+        response.headers['Cache-Control'] = 'public, max-age=120'
+
+        # ETag (berbasis isi konten, aman untuk cache validation)
+        etag = hashlib.md5(response.get_data()).hexdigest()
+        response.set_etag(etag)
+
+        # Hapus Vary: Cookie agar bisa cache
+        response.headers.pop("Vary", None)
+
+        # Validasi If-None-Match dari browser (304)
+        if request.headers.get("If-None-Match") == etag:
+            response.status_code = 304
+            response.set_data(b"")
+    return response
 
 
 if __name__ == "__main__":

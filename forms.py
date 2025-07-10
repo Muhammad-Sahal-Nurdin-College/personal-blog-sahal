@@ -1,7 +1,9 @@
 from flask_ckeditor import CKEditorField
 from flask_wtf import FlaskForm
-from wtforms import EmailField, PasswordField, StringField, SubmitField
+from wtforms import EmailField, PasswordField, StringField, SubmitField, TextAreaField
 from wtforms.validators import URL, DataRequired, Email
+from flask_wtf.file import FileField, FileAllowed 
+
 
 
 ##WTForm
@@ -29,3 +31,11 @@ class LoginForm(FlaskForm):
 class CommentForm(FlaskForm):
     body = CKEditorField("Komentar", validators=[DataRequired()])
     submit = SubmitField("Tambah Komentar")
+    
+class GeneralRecommendationForm(FlaskForm):
+    title = StringField("Judul Rekomendasi")
+    notes = TextAreaField("Catatan Tambahan (opsional)")
+    file = FileField("Lampirkan File", validators=[
+        FileAllowed(['pdf', 'docx', 'zip', 'jpg', 'png'], 'File tidak didukung!')
+    ])
+    submit = SubmitField("Upload dan Kirim ke Admin")

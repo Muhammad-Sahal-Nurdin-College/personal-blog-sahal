@@ -15,7 +15,7 @@ from flask_login import (LoginManager, current_user, login_required,
 from flask_wtf.csrf import CSRFProtect
 from werkzeug.security import check_password_hash, generate_password_hash
 
-from forms import CommentForm, CreatePostForm, LoginForm, RegisterForm
+from forms import CommentForm, CreatePostForm, LoginForm, RegisterForm, GeneralRecommendationForm
 
 from git_handle import git_push
 from tables import BlogPost, Comment, User, db
@@ -26,6 +26,9 @@ import time
 
 import hashlib
 from flask import request
+from werkzeug.utils import secure_filename 
+
+
 
 
 # Muat environment variables dari file .env
@@ -332,12 +335,50 @@ def set_cookie_consent():
     response.set_cookie('cookie_consent', 'true', max_age=60) 
     return response
 
+
+@app.route("/recommend", methods=["GET", "POST"])
+@login_required
+def recommend_blog():
+    form = GeneralRecommendationForm()
+    
+    if form.validate_on_submit():
+        file = form.file.data
+        filename = secure_filename(file.filename)
+        file_path = os.path.join("static/uploads", filename)
+        file.save(file_path)
+
+        # Ambil email admin dari user id = 1
+        admin = User.query.get(1)
+        if not admin:
+            flash("Admin tidak ditemukan!", "danger")
+            return redirect(url_for("home"))
+
+        # Kirim email ke admin
+        msg = Message(
+            subject=f"Rekomendasi Blog Baru dari {current_user.name}",
+            recipients=[admin.email],
+            html=f"""
+                <p><b>{current_user.name}</b> mengirimkan rekomendasi blog baru.</p>
+                <p><b>Judul:</b> {form.title.data or '-'}<br>
+                <b>Catatan:</b> {form.notes.data or '-'}</p>
+            """
+        )
+
+        with open(file_path, "rb") as fp:
+            msg.attach(filename, file.mimetype, fp.read())
+
+        mail.send(msg)
+        flash("Rekomendasi berhasil dikirim ke admin!", "success")
+        return redirect(url_for("home"))
+
+    return render_template("recommend.html", form=form)
+
+
+
 @app.route("/debug-session")
 def debug_session():
     print("Current user name:", current_user.name)
     return "Cek terminal / console Flask"
-
-
 
 @app.route("/clear-cache")
 def clear_cache():

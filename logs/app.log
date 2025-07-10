@@ -1,0 +1,193 @@
+2025-07-10 08:17:16,804 - WARNING -  * Debugger is active!
+2025-07-10 08:17:16,814 - INFO -  * Debugger PIN: 122-843-081
+2025-07-10 08:17:41,634 - INFO -  * Detected change in 'D:\\Tugas Kuliah\\SEMESTER 8\\PEMROGRAMAN JARINGAN\\PERTEMUAN 12\\personal-blog-sahal\\app.py', reloading
+2025-07-10 08:17:42,611 - WARNING -  * Debugger is active!
+2025-07-10 08:17:42,622 - INFO -  * Debugger PIN: 122-843-081
+2025-07-10 08:18:19,175 - INFO -  * Detected change in 'D:\\Tugas Kuliah\\SEMESTER 8\\PEMROGRAMAN JARINGAN\\PERTEMUAN 12\\personal-blog-sahal\\tests\\test_recommend.py', reloading
+2025-07-10 08:18:20,194 - WARNING -  * Debugger is active!
+2025-07-10 08:18:20,206 - INFO -  * Debugger PIN: 122-843-081
+2025-07-10 08:18:44,939 - INFO -  * Detected change in 'D:\\Tugas Kuliah\\SEMESTER 8\\PEMROGRAMAN JARINGAN\\PERTEMUAN 12\\personal-blog-sahal\\app.py', reloading
+2025-07-10 08:18:45,975 - WARNING -  * Debugger is active!
+2025-07-10 08:18:45,987 - INFO -  * Debugger PIN: 122-843-081
+2025-07-10 08:18:55,769 - INFO -  * Detected change in 'D:\\Tugas Kuliah\\SEMESTER 8\\PEMROGRAMAN JARINGAN\\PERTEMUAN 12\\personal-blog-sahal\\app.py', reloading
+2025-07-10 08:18:56,806 - WARNING -  * Debugger is active!
+2025-07-10 08:18:56,817 - INFO -  * Debugger PIN: 122-843-081
+2025-07-10 08:19:04,406 - INFO -  * Detected change in 'D:\\Tugas Kuliah\\SEMESTER 8\\PEMROGRAMAN JARINGAN\\PERTEMUAN 12\\personal-blog-sahal\\app.py', reloading
+2025-07-10 08:19:05,478 - WARNING -  * Debugger is active!
+2025-07-10 08:19:05,489 - INFO -  * Debugger PIN: 122-843-081
+2025-07-10 08:19:06,691 - INFO -  * Detected change in 'D:\\Tugas Kuliah\\SEMESTER 8\\PEMROGRAMAN JARINGAN\\PERTEMUAN 12\\personal-blog-sahal\\app.py', reloading
+2025-07-10 08:19:07,680 - WARNING -  * Debugger is active!
+2025-07-10 08:19:07,692 - INFO -  * Debugger PIN: 122-843-081
+2025-07-10 08:19:53,668 - INFO - The CSRF token is missing.
+2025-07-10 08:21:18,887 - INFO - 127.0.0.1 - - [10/Jul/2025 08:21:18] "GET / HTTP/1.1" 200 -
+2025-07-10 08:21:18,972 - INFO - 127.0.0.1 - - [10/Jul/2025 08:21:18] "[32mGET /static//css/styles.css HTTP/1.1[0m" 308 -
+2025-07-10 08:21:18,977 - INFO - 127.0.0.1 - - [10/Jul/2025 08:21:18] "[32mGET /static//js/scripts.js HTTP/1.1[0m" 308 -
+2025-07-10 08:21:19,076 - INFO - 127.0.0.1 - - [10/Jul/2025 08:21:19] "[36mGET /static/assets/img/sahallogo.png HTTP/1.1[0m" 304 -
+2025-07-10 08:21:19,132 - INFO - 127.0.0.1 - - [10/Jul/2025 08:21:19] "[36mGET /static/css/styles.css HTTP/1.1[0m" 304 -
+2025-07-10 08:21:19,135 - INFO - 127.0.0.1 - - [10/Jul/2025 08:21:19] "[36mGET /static/js/scripts.js HTTP/1.1[0m" 304 -
+2025-07-10 08:21:19,145 - INFO - 127.0.0.1 - - [10/Jul/2025 08:21:19] "[36mGET /static/assets/img/home-bg.jpg HTTP/1.1[0m" 304 -
+2025-07-10 08:21:19,470 - INFO - 127.0.0.1 - - [10/Jul/2025 08:21:19] "[36mGET /static/assets/favicon.ico HTTP/1.1[0m" 304 -
+2025-07-10 08:21:20,153 - INFO - 127.0.0.1 - - [10/Jul/2025 08:21:20] "GET /recommend HTTP/1.1" 200 -
+2025-07-10 08:21:26,713 - INFO - User sahal2 mengirim rekomendasi: screencapture-docs-google-forms-u-0-d-e-1FAIpQLSeqhUSMb2KQTm-FlUpH4TCadG4FDyHyWnTpyaiVNGUxaW5wYQ-formResponse-2025-07-09-10_46_08_1.pdf
+2025-07-10 08:21:26,931 - ERROR - FTP Error oleh sahal2: [Errno 11001] getaddrinfo failed
+2025-07-10 08:21:26,935 - INFO - 127.0.0.1 - - [10/Jul/2025 08:21:26] "[32mPOST /recommend HTTP/1.1[0m" 302 -
+2025-07-10 08:21:26,961 - INFO - 127.0.0.1 - - [10/Jul/2025 08:21:26] "GET /recommend HTTP/1.1" 200 -
+2025-07-10 08:28:29,407 - INFO - 127.0.0.1 - - [10/Jul/2025 08:28:29] "[35m[1mPOST /recommend HTTP/1.1[0m" 500 -
+2025-07-10 08:28:29,480 - INFO - 127.0.0.1 - - [10/Jul/2025 08:28:29] "[36mGET /recommend?__debugger__=yes&cmd=resource&f=style.css HTTP/1.1[0m" 304 -
+2025-07-10 08:28:29,494 - INFO - 127.0.0.1 - - [10/Jul/2025 08:28:29] "[36mGET /recommend?__debugger__=yes&cmd=resource&f=debugger.js HTTP/1.1[0m" 304 -
+2025-07-10 08:28:29,546 - INFO - 127.0.0.1 - - [10/Jul/2025 08:28:29] "[36mGET /recommend?__debugger__=yes&cmd=resource&f=console.png HTTP/1.1[0m" 304 -
+2025-07-10 08:28:29,732 - INFO - 127.0.0.1 - - [10/Jul/2025 08:28:29] "[36mGET /recommend?__debugger__=yes&cmd=resource&f=console.png HTTP/1.1[0m" 304 -
+2025-07-10 08:28:32,059 - INFO - 127.0.0.1 - - [10/Jul/2025 08:28:32] "GET /recommend HTTP/1.1" 200 -
+2025-07-10 08:29:14,796 - INFO - User sahal2 mengirim rekomendasi: Ini_test.pdf
+2025-07-10 08:29:14,814 - ERROR - FTP Error oleh sahal2: [Errno 11001] getaddrinfo failed
+2025-07-10 08:29:14,817 - INFO - 127.0.0.1 - - [10/Jul/2025 08:29:14] "[32mPOST /recommend HTTP/1.1[0m" 302 -
+2025-07-10 08:29:14,827 - INFO - 127.0.0.1 - - [10/Jul/2025 08:29:14] "GET /recommend HTTP/1.1" 200 -
+2025-07-10 08:30:45,097 - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2025-07-10 08:30:45,097 - INFO - [33mPress CTRL+C to quit[0m
+2025-07-10 08:30:45,099 - INFO -  * Restarting with stat
+2025-07-10 08:30:46,034 - WARNING -  * Debugger is active!
+2025-07-10 08:30:46,044 - INFO -  * Debugger PIN: 122-843-081
+2025-07-10 08:30:51,008 - INFO - 127.0.0.1 - - [10/Jul/2025 08:30:51] "GET / HTTP/1.1" 200 -
+2025-07-10 08:30:54,514 - INFO - 127.0.0.1 - - [10/Jul/2025 08:30:54] "GET / HTTP/1.1" 200 -
+2025-07-10 08:30:54,558 - INFO - 127.0.0.1 - - [10/Jul/2025 08:30:54] "[32mGET /static//css/styles.css HTTP/1.1[0m" 308 -
+2025-07-10 08:30:54,562 - INFO - 127.0.0.1 - - [10/Jul/2025 08:30:54] "[32mGET /static//js/scripts.js HTTP/1.1[0m" 308 -
+2025-07-10 08:30:54,686 - INFO - 127.0.0.1 - - [10/Jul/2025 08:30:54] "[36mGET /static/assets/img/sahallogo.png HTTP/1.1[0m" 304 -
+2025-07-10 08:30:54,707 - INFO - 127.0.0.1 - - [10/Jul/2025 08:30:54] "[36mGET /static/css/styles.css HTTP/1.1[0m" 304 -
+2025-07-10 08:30:54,709 - INFO - 127.0.0.1 - - [10/Jul/2025 08:30:54] "[36mGET /static/js/scripts.js HTTP/1.1[0m" 304 -
+2025-07-10 08:30:54,720 - INFO - 127.0.0.1 - - [10/Jul/2025 08:30:54] "[36mGET /static/assets/img/home-bg.jpg HTTP/1.1[0m" 304 -
+2025-07-10 08:30:55,031 - INFO - 127.0.0.1 - - [10/Jul/2025 08:30:55] "[36mGET /static/assets/favicon.ico HTTP/1.1[0m" 304 -
+2025-07-10 08:31:03,453 - INFO - User sahal2 mengirim rekomendasi: Ini_test.pdf
+2025-07-10 08:31:04,924 - ERROR - FTP Error oleh sahal2: 550 Failed to change directory.
+2025-07-10 08:31:04,926 - INFO - 127.0.0.1 - - [10/Jul/2025 08:31:04] "[32mPOST /recommend HTTP/1.1[0m" 302 -
+2025-07-10 08:31:04,936 - INFO - 127.0.0.1 - - [10/Jul/2025 08:31:04] "GET /recommend HTTP/1.1" 200 -
+2025-07-10 08:32:07,861 - INFO -  * Detected change in 'D:\\Tugas Kuliah\\SEMESTER 8\\PEMROGRAMAN JARINGAN\\PERTEMUAN 12\\personal-blog-sahal\\app.py', reloading
+2025-07-10 08:32:07,970 - INFO -  * Restarting with stat
+2025-07-10 08:32:08,918 - WARNING -  * Debugger is active!
+2025-07-10 08:32:08,929 - INFO -  * Debugger PIN: 122-843-081
+2025-07-10 08:33:13,407 - INFO -  * Detected change in 'D:\\Tugas Kuliah\\SEMESTER 8\\PEMROGRAMAN JARINGAN\\PERTEMUAN 12\\personal-blog-sahal\\app.py', reloading
+2025-07-10 08:33:13,495 - INFO -  * Restarting with stat
+2025-07-10 08:33:14,407 - WARNING -  * Debugger is active!
+2025-07-10 08:33:14,418 - INFO -  * Debugger PIN: 122-843-081
+2025-07-10 08:33:26,357 - INFO -  * Detected change in 'D:\\Tugas Kuliah\\SEMESTER 8\\PEMROGRAMAN JARINGAN\\PERTEMUAN 12\\personal-blog-sahal\\app.py', reloading
+2025-07-10 08:33:26,437 - INFO -  * Restarting with stat
+2025-07-10 08:33:27,389 - WARNING -  * Debugger is active!
+2025-07-10 08:33:27,404 - INFO -  * Debugger PIN: 122-843-081
+2025-07-10 08:33:56,665 - INFO - 127.0.0.1 - - [10/Jul/2025 08:33:56] "GET /recommend HTTP/1.1" 200 -
+2025-07-10 08:34:03,856 - INFO - User sahal2 mengirim rekomendasi: Ini_test.pdf
+2025-07-10 08:34:07,421 - INFO - File 'Ini_test.pdf' berhasil diupload ke FTP oleh sahal2
+2025-07-10 08:34:07,630 - INFO - Email rekomendasi dikirim ke admin: sahalntesting@gmail.com, file URL: None/Ini_test.pdf
+2025-07-10 08:34:12,800 - INFO - 127.0.0.1 - - [10/Jul/2025 08:34:12] "[32mPOST /recommend HTTP/1.1[0m" 302 -
+2025-07-10 08:34:12,861 - INFO - 127.0.0.1 - - [10/Jul/2025 08:34:12] "GET / HTTP/1.1" 200 -
+2025-07-10 08:34:12,906 - INFO - 127.0.0.1 - - [10/Jul/2025 08:34:12] "[32mGET /static//css/styles.css HTTP/1.1[0m" 308 -
+2025-07-10 08:34:12,938 - INFO - 127.0.0.1 - - [10/Jul/2025 08:34:12] "[32mGET /static//js/scripts.js HTTP/1.1[0m" 308 -
+2025-07-10 08:34:13,022 - INFO - 127.0.0.1 - - [10/Jul/2025 08:34:13] "[36mGET /static/assets/img/sahallogo.png HTTP/1.1[0m" 304 -
+2025-07-10 08:34:13,041 - INFO - 127.0.0.1 - - [10/Jul/2025 08:34:13] "[36mGET /static/css/styles.css HTTP/1.1[0m" 304 -
+2025-07-10 08:34:13,055 - INFO - 127.0.0.1 - - [10/Jul/2025 08:34:13] "[36mGET /static/assets/img/home-bg.jpg HTTP/1.1[0m" 304 -
+2025-07-10 08:34:13,056 - INFO - 127.0.0.1 - - [10/Jul/2025 08:34:13] "[36mGET /static/js/scripts.js HTTP/1.1[0m" 304 -
+2025-07-10 08:36:28,801 - INFO -  * Detected change in 'D:\\Tugas Kuliah\\SEMESTER 8\\PEMROGRAMAN JARINGAN\\PERTEMUAN 12\\personal-blog-sahal\\app.py', reloading
+2025-07-10 08:36:28,887 - INFO -  * Restarting with stat
+2025-07-10 08:36:29,833 - WARNING -  * Debugger is active!
+2025-07-10 08:36:29,843 - INFO -  * Debugger PIN: 122-843-081
+2025-07-10 08:36:29,923 - INFO - 127.0.0.1 - - [10/Jul/2025 08:36:29] "[33mGET / HTTP/1.1[0m" 404 -
+2025-07-10 08:37:34,241 - INFO - 127.0.0.1 - - [10/Jul/2025 08:37:34] "[33mGET / HTTP/1.1[0m" 404 -
+2025-07-10 08:37:35,373 - INFO - 127.0.0.1 - - [10/Jul/2025 08:37:35] "[33mGET /recommend HTTP/1.1[0m" 404 -
+2025-07-10 08:37:39,707 - INFO - 127.0.0.1 - - [10/Jul/2025 08:37:39] "[33mGET /recommend HTTP/1.1[0m" 404 -
+2025-07-10 08:38:26,061 - INFO -  * Detected change in 'D:\\Tugas Kuliah\\SEMESTER 8\\PEMROGRAMAN JARINGAN\\PERTEMUAN 12\\personal-blog-sahal\\app.py', reloading
+2025-07-10 08:38:26,185 - INFO -  * Restarting with stat
+2025-07-10 08:38:27,143 - WARNING -  * Debugger is active!
+2025-07-10 08:38:27,154 - INFO -  * Debugger PIN: 122-843-081
+2025-07-10 08:38:42,728 - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2025-07-10 08:38:42,729 - INFO - [33mPress CTRL+C to quit[0m
+2025-07-10 08:38:42,730 - INFO -  * Restarting with stat
+2025-07-10 08:38:43,631 - WARNING -  * Debugger is active!
+2025-07-10 08:38:43,641 - INFO -  * Debugger PIN: 122-843-081
+2025-07-10 08:39:37,147 - INFO - 127.0.0.1 - - [10/Jul/2025 08:39:37] "GET / HTTP/1.1" 200 -
+2025-07-10 08:39:37,240 - INFO - 127.0.0.1 - - [10/Jul/2025 08:39:37] "[32mGET /static//css/styles.css HTTP/1.1[0m" 308 -
+2025-07-10 08:39:37,287 - INFO - 127.0.0.1 - - [10/Jul/2025 08:39:37] "[32mGET /static//js/scripts.js HTTP/1.1[0m" 308 -
+2025-07-10 08:39:37,344 - INFO - 127.0.0.1 - - [10/Jul/2025 08:39:37] "[36mGET /static/assets/img/sahallogo.png HTTP/1.1[0m" 304 -
+2025-07-10 08:39:37,388 - INFO - 127.0.0.1 - - [10/Jul/2025 08:39:37] "[36mGET /static/css/styles.css HTTP/1.1[0m" 304 -
+2025-07-10 08:39:37,396 - INFO - 127.0.0.1 - - [10/Jul/2025 08:39:37] "[36mGET /static/js/scripts.js HTTP/1.1[0m" 304 -
+2025-07-10 08:39:37,405 - INFO - 127.0.0.1 - - [10/Jul/2025 08:39:37] "[36mGET /static/assets/img/home-bg.jpg HTTP/1.1[0m" 304 -
+2025-07-10 08:39:37,742 - INFO - 127.0.0.1 - - [10/Jul/2025 08:39:37] "[36mGET /static/assets/favicon.ico HTTP/1.1[0m" 304 -
+2025-07-10 08:39:40,895 - INFO - 127.0.0.1 - - [10/Jul/2025 08:39:40] "GET /recommend HTTP/1.1" 200 -
+2025-07-10 08:39:57,607 - INFO - User sahal2 mengirim rekomendasi: Ini_test.pdf
+2025-07-10 08:40:59,436 - ERROR - FTP Error oleh sahal2: 425 Failed to establish connection.
+2025-07-10 08:40:59,438 - INFO - 127.0.0.1 - - [10/Jul/2025 08:40:59] "[32mPOST /recommend HTTP/1.1[0m" 302 -
+2025-07-10 08:40:59,452 - INFO - 127.0.0.1 - - [10/Jul/2025 08:40:59] "GET /recommend HTTP/1.1" 200 -
+2025-07-10 08:43:35,527 - INFO -  * Detected change in 'D:\\Tugas Kuliah\\SEMESTER 8\\PEMROGRAMAN JARINGAN\\PERTEMUAN 12\\personal-blog-sahal\\app.py', reloading
+2025-07-10 08:43:35,630 - INFO -  * Restarting with stat
+2025-07-10 08:44:13,397 - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2025-07-10 08:44:13,397 - INFO - [33mPress CTRL+C to quit[0m
+2025-07-10 08:44:13,399 - INFO -  * Restarting with stat
+2025-07-10 08:44:14,303 - WARNING -  * Debugger is active!
+2025-07-10 08:44:14,313 - INFO -  * Debugger PIN: 122-843-081
+2025-07-10 08:44:16,911 - INFO - 127.0.0.1 - - [10/Jul/2025 08:44:16] "GET /recommend HTTP/1.1" 200 -
+2025-07-10 08:44:22,579 - INFO - User sahal2 mengirim rekomendasi: Ini_test.pdf
+2025-07-10 08:44:26,948 - INFO - File 'Ini_test.pdf' berhasil diupload ke FTP oleh sahal2
+2025-07-10 08:44:27,156 - INFO - Email rekomendasi dikirim ke admin: sahalntesting@gmail.com, file URL: None/Ini_test.pdf
+2025-07-10 08:44:32,119 - INFO - 127.0.0.1 - - [10/Jul/2025 08:44:32] "[32mPOST /recommend HTTP/1.1[0m" 302 -
+2025-07-10 08:44:32,200 - INFO - 127.0.0.1 - - [10/Jul/2025 08:44:32] "GET / HTTP/1.1" 200 -
+2025-07-10 08:44:32,246 - INFO - 127.0.0.1 - - [10/Jul/2025 08:44:32] "[32mGET /static//css/styles.css HTTP/1.1[0m" 308 -
+2025-07-10 08:44:32,277 - INFO - 127.0.0.1 - - [10/Jul/2025 08:44:32] "[32mGET /static//js/scripts.js HTTP/1.1[0m" 308 -
+2025-07-10 08:44:32,373 - INFO - 127.0.0.1 - - [10/Jul/2025 08:44:32] "[36mGET /static/assets/img/sahallogo.png HTTP/1.1[0m" 304 -
+2025-07-10 08:44:32,385 - INFO - 127.0.0.1 - - [10/Jul/2025 08:44:32] "[36mGET /static/css/styles.css HTTP/1.1[0m" 304 -
+2025-07-10 08:44:32,396 - INFO - 127.0.0.1 - - [10/Jul/2025 08:44:32] "[36mGET /static/assets/img/home-bg.jpg HTTP/1.1[0m" 304 -
+2025-07-10 08:44:32,400 - INFO - 127.0.0.1 - - [10/Jul/2025 08:44:32] "[36mGET /static/js/scripts.js HTTP/1.1[0m" 304 -
+2025-07-10 08:47:29,835 - INFO -  * Detected change in 'D:\\Tugas Kuliah\\SEMESTER 8\\PEMROGRAMAN JARINGAN\\PERTEMUAN 12\\personal-blog-sahal\\app.py', reloading
+2025-07-10 08:47:29,927 - INFO -  * Restarting with stat
+2025-07-10 08:47:30,821 - WARNING -  * Debugger is active!
+2025-07-10 08:47:30,832 - INFO -  * Debugger PIN: 122-843-081
+2025-07-10 08:47:38,454 - INFO -  * Detected change in 'D:\\Tugas Kuliah\\SEMESTER 8\\PEMROGRAMAN JARINGAN\\PERTEMUAN 12\\personal-blog-sahal\\app.py', reloading
+2025-07-10 08:47:38,518 - INFO -  * Restarting with stat
+2025-07-10 08:47:39,407 - WARNING -  * Debugger is active!
+2025-07-10 08:47:39,419 - INFO -  * Debugger PIN: 122-843-081
+2025-07-10 08:47:58,844 - INFO -  * Detected change in 'D:\\Tugas Kuliah\\SEMESTER 8\\PEMROGRAMAN JARINGAN\\PERTEMUAN 12\\personal-blog-sahal\\app.py', reloading
+2025-07-10 08:47:58,914 - INFO -  * Restarting with stat
+2025-07-10 08:47:59,857 - WARNING -  * Debugger is active!
+2025-07-10 08:47:59,867 - INFO -  * Debugger PIN: 122-843-081
+2025-07-10 08:49:47,657 - INFO - 127.0.0.1 - - [10/Jul/2025 08:49:47] "GET / HTTP/1.1" 200 -
+2025-07-10 08:49:47,746 - INFO - 127.0.0.1 - - [10/Jul/2025 08:49:47] "[32mGET /static//css/styles.css HTTP/1.1[0m" 308 -
+2025-07-10 08:49:47,751 - INFO - 127.0.0.1 - - [10/Jul/2025 08:49:47] "[32mGET /static//js/scripts.js HTTP/1.1[0m" 308 -
+2025-07-10 08:49:47,850 - INFO - 127.0.0.1 - - [10/Jul/2025 08:49:47] "[36mGET /static/assets/img/sahallogo.png HTTP/1.1[0m" 304 -
+2025-07-10 08:49:47,894 - INFO - 127.0.0.1 - - [10/Jul/2025 08:49:47] "[36mGET /static/css/styles.css HTTP/1.1[0m" 304 -
+2025-07-10 08:49:47,895 - INFO - 127.0.0.1 - - [10/Jul/2025 08:49:47] "[36mGET /static/js/scripts.js HTTP/1.1[0m" 304 -
+2025-07-10 08:49:47,905 - INFO - 127.0.0.1 - - [10/Jul/2025 08:49:47] "[36mGET /static/assets/img/home-bg.jpg HTTP/1.1[0m" 304 -
+2025-07-10 08:49:48,205 - INFO - 127.0.0.1 - - [10/Jul/2025 08:49:48] "[36mGET /static/assets/favicon.ico HTTP/1.1[0m" 304 -
+2025-07-10 08:49:48,818 - INFO - 127.0.0.1 - - [10/Jul/2025 08:49:48] "GET /recommend HTTP/1.1" 200 -
+2025-07-10 08:49:54,453 - INFO - User sahal2 mengirim rekomendasi: Ini_test.pdf
+2025-07-10 08:50:01,004 - INFO - File 'Ini_test.pdf' berhasil diupload ke FTP oleh sahal2
+2025-07-10 08:50:01,206 - INFO - Email rekomendasi dikirim ke admin: sahalntesting@gmail.com, file URL: http://127.0.0.1:5000/static/uploads/Ini_test.pdf
+2025-07-10 08:50:07,665 - INFO - 127.0.0.1 - - [10/Jul/2025 08:50:07] "[32mPOST /recommend HTTP/1.1[0m" 302 -
+2025-07-10 08:50:07,675 - INFO - 127.0.0.1 - - [10/Jul/2025 08:50:07] "GET / HTTP/1.1" 200 -
+2025-07-10 08:50:07,726 - INFO - 127.0.0.1 - - [10/Jul/2025 08:50:07] "[36mGET /static/assets/img/sahallogo.png HTTP/1.1[0m" 304 -
+2025-07-10 08:50:07,745 - INFO - 127.0.0.1 - - [10/Jul/2025 08:50:07] "[36mGET /static/css/styles.css HTTP/1.1[0m" 304 -
+2025-07-10 08:50:07,757 - INFO - 127.0.0.1 - - [10/Jul/2025 08:50:07] "[36mGET /static/js/scripts.js HTTP/1.1[0m" 304 -
+2025-07-10 08:50:07,775 - INFO - 127.0.0.1 - - [10/Jul/2025 08:50:07] "[36mGET /static/assets/img/home-bg.jpg HTTP/1.1[0m" 304 -
+2025-07-10 08:50:20,753 - INFO - 127.0.0.1 - - [10/Jul/2025 08:50:20] "GET /static/uploads/Ini_test.pdf HTTP/1.1" 200 -
+2025-07-10 08:50:20,932 - INFO - 127.0.0.1 - - [10/Jul/2025 08:50:20] "[33mGET /favicon.ico HTTP/1.1[0m" 404 -
+2025-07-10 09:18:08,358 - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2025-07-10 09:18:08,358 - INFO - [33mPress CTRL+C to quit[0m
+2025-07-10 09:18:08,360 - INFO -  * Restarting with stat
+2025-07-10 09:18:09,277 - WARNING -  * Debugger is active!
+2025-07-10 09:18:09,292 - INFO -  * Debugger PIN: 122-843-081
+2025-07-10 09:18:12,741 - INFO - 127.0.0.1 - - [10/Jul/2025 09:18:12] "GET /recommend HTTP/1.1" 200 -
+2025-07-10 09:19:16,819 - INFO - User sahal2 mengirim rekomendasi: Ini_test.pdf
+2025-07-10 09:20:18,846 - ERROR - FTP Error oleh sahal2: 425 Failed to establish connection.
+2025-07-10 09:20:18,848 - INFO - 127.0.0.1 - - [10/Jul/2025 09:20:18] "[32mPOST /recommend HTTP/1.1[0m" 302 -
+2025-07-10 09:20:18,858 - INFO - 127.0.0.1 - - [10/Jul/2025 09:20:18] "GET /recommend HTTP/1.1" 200 -
+2025-07-10 09:21:07,953 - INFO - User sahal2 mengirim rekomendasi: Ini_test.pdf
+2025-07-10 09:21:11,939 - INFO - File 'Ini_test.pdf' berhasil diupload ke FTP oleh sahal2
+2025-07-10 09:21:12,158 - INFO - Email rekomendasi dikirim ke admin: sahalntesting@gmail.com, file URL: http://127.0.0.1:5000/static/uploads/Ini_test.pdf
+2025-07-10 09:21:18,750 - INFO - 127.0.0.1 - - [10/Jul/2025 09:21:18] "[32mPOST /recommend HTTP/1.1[0m" 302 -
+2025-07-10 09:21:18,816 - INFO - 127.0.0.1 - - [10/Jul/2025 09:21:18] "GET / HTTP/1.1" 200 -
+2025-07-10 09:21:18,952 - INFO - 127.0.0.1 - - [10/Jul/2025 09:21:18] "[32mGET /static//css/styles.css HTTP/1.1[0m" 308 -
+2025-07-10 09:21:19,057 - INFO - 127.0.0.1 - - [10/Jul/2025 09:21:19] "[32mGET /static//js/scripts.js HTTP/1.1[0m" 308 -
+2025-07-10 09:21:19,118 - INFO - 127.0.0.1 - - [10/Jul/2025 09:21:19] "[36mGET /static/assets/img/sahallogo.png HTTP/1.1[0m" 304 -
+2025-07-10 09:21:19,131 - INFO - 127.0.0.1 - - [10/Jul/2025 09:21:19] "[36mGET /static/css/styles.css HTTP/1.1[0m" 304 -
+2025-07-10 09:21:19,167 - INFO - 127.0.0.1 - - [10/Jul/2025 09:21:19] "[36mGET /static/js/scripts.js HTTP/1.1[0m" 304 -
+2025-07-10 09:21:19,188 - INFO - 127.0.0.1 - - [10/Jul/2025 09:21:19] "[36mGET /static/assets/img/home-bg.jpg HTTP/1.1[0m" 304 -
+2025-07-10 09:22:17,003 - INFO - 127.0.0.1 - - [10/Jul/2025 09:22:17] "GET /static/uploads/Ini_test.pdf HTTP/1.1" 200 -

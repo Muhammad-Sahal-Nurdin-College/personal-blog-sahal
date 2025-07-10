@@ -28,6 +28,19 @@ import hashlib
 from flask import request
 from werkzeug.utils import secure_filename 
 
+from ftplib import FTP
+
+import logging
+
+# Konfigurasi logging
+if not os.path.exists("logs"):
+    os.makedirs("logs")
+
+logging.basicConfig(
+    filename="logs/app.log",
+    level=logging.INFO,
+    format="%(asctime)s - %(levelname)s - %(message)s"
+)
 
 
 
@@ -43,6 +56,7 @@ app.config['CACHE_DEFAULT_TIMEOUT'] = 60  # cache berlaku selama 60 detik
 # Inisialisasi objek cache
 cache = Cache(app)
 
+app.config["SERVER_NAME"] = "127.0.0.1:5000"
 
 # Serializer untuk membuat dan memverifikasi token
 serializer = URLSafeTimedSerializer(app.config['SECRET_KEY'])
@@ -340,38 +354,69 @@ def set_cookie_consent():
 @login_required
 def recommend_blog():
     form = GeneralRecommendationForm()
-    
+
     if form.validate_on_submit():
         file = form.file.data
         filename = secure_filename(file.filename)
-        file_path = os.path.join("static/uploads", filename)
-        file.save(file_path)
+        temp_path = os.path.join("static/uploads", filename)
+        file.save(temp_path)
 
-        # Ambil email admin dari user id = 1
+        # ✅ LOG 1: User upload
+        logging.info(f"User {current_user.name} mengirim rekomendasi: {filename}")
+
+        # ====================== FTP UPLOAD ======================
+        try:
+            ftp = FTP()
+            ftp.connect(os.getenv("FTP_HOST"), int(os.getenv("FTP_PORT")))
+            ftp.login(os.getenv("FTP_USER"), os.getenv("FTP_PASSWORD"))
+            ftp.set_pasv(True)  # Wajib untuk mencegah 425 Error
+
+            with open(temp_path, 'rb') as f:
+                ftp.storbinary(f"STOR {filename}", f)
+
+            logging.info(f"File '{filename}' berhasil diupload ke FTP oleh {current_user.name}")
+            ftp.quit()
+
+        except Exception as e:
+            logging.error(f"FTP Error oleh {current_user.name}: {e}")
+            flash(f"Gagal upload ke FTP: {e}", "danger")
+            return redirect(url_for("recommend_blog"))
+        # ========================================================
+
+        # ✅ Ambil email admin (id = 1)
         admin = User.query.get(1)
         if not admin:
             flash("Admin tidak ditemukan!", "danger")
             return redirect(url_for("home"))
 
-        # Kirim email ke admin
+        # ✅ Buat URL untuk file (versi static sebagai fallback)
+        if os.getenv("FTP_BASE_URL"):
+            file_url = f"{os.getenv('FTP_BASE_URL').rstrip('/')}/{filename}"
+        else:
+            file_url = f"{request.host_url}static/uploads/{filename}"
+
+        # ✅ LOG 3: Email berhasil dikirim
+        logging.info(f"Email rekomendasi dikirim ke admin: {admin.email}, file URL: {file_url}")
+
+        # ✅ Kirim email ke admin
         msg = Message(
             subject=f"Rekomendasi Blog Baru dari {current_user.name}",
             recipients=[admin.email],
             html=f"""
                 <p><b>{current_user.name}</b> mengirimkan rekomendasi blog baru.</p>
-                <p><b>Judul:</b> {form.title.data or '-'}<br>
-                <b>Catatan:</b> {form.notes.data or '-'}</p>
+                <p><b>Judul:</b> {form.title.data or '-'}</p>
+                <p><b>Catatan:</b> {form.notes.data or '-'}</p>
+                <p>🔗 <a href="{file_url}">Download Lampiran</a></p>
             """
         )
-
-        with open(file_path, "rb") as fp:
-            msg.attach(filename, file.mimetype, fp.read())
-
+        msg.attach(filename, file.mimetype, open(temp_path, 'rb').read())
         mail.send(msg)
-        flash("Rekomendasi berhasil dikirim ke admin!", "success")
+
+        flash("Rekomendasi berhasil dikirim ke admin via email dan FTP!", "success")
         return redirect(url_for("home"))
 
     return render_template("recommend.html", form=form)
+
 
 
 
